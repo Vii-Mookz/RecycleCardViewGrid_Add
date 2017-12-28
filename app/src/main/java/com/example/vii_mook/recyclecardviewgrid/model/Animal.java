@@ -59,7 +59,8 @@ public class Animal {
                 R.drawable.spider,
 
                 R.drawable.whiterabbit,
-                R.drawable.rabbit
+                R.drawable.rabbit,
+                R.drawable.frame_photo
 
         };
 
@@ -69,7 +70,7 @@ public class Animal {
                 "Dog 1", "Dog 2",
                 "Parrot 1", "Parrot 2", "Parrot 3",
                 "Spider 1", "Spider 2",
-                "Rabbit 1", "Rabbit 2"};
+                "Rabbit 1", "Rabbit 2","image"};
 
         for (int i = 0; i < images.length; i++) {
             Animal current = new Animal();

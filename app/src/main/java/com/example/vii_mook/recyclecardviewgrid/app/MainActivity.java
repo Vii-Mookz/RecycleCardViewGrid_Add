@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Home Page");
-        toolbar.inflateMenu(R.menu.menu_main);
-        toolbar.setOnMenuItemClickListener(this);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.setTitle("Home Page");
+//        toolbar.inflateMenu(R.menu.menu_main);
+//        toolbar.setOnMenuItemClickListener(this);
 
         setUpRecyclerView();
     }

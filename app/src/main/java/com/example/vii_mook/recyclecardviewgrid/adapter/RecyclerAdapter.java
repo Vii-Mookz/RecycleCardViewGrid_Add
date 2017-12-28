@@ -1,6 +1,7 @@
 package com.example.vii_mook.recyclecardviewgrid.adapter;
 
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -49,7 +50,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     public void addItem(int position, Animal animal) {
         mData.add(position, animal);
-        notifyItemInserted(position);
+        notifyItemInserted(position+1);
 //		notifyItemRangeChanged(position, mDataList.size());
 //		notifyDataSetChanged();
     }
@@ -65,18 +66,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         ImageView imgThumb, imgCopy;
         int position;
         Animal current;
-        Toolbar toolbar;
+        FloatingActionButton fabAdd;
 
         public MyViewHolder(View itemview) {
             super(itemview);
 
             title = (TextView) itemview.findViewById(R.id.txv_row);
             imgThumb = (ImageView) itemview.findViewById(R.id.img_row);
-            imgCopy = (ImageView) itemview.findViewById(R.id.img_row_add);
-            toolbar = (Toolbar) itemview.findViewById(R.id.add_img);
-
+//            imgCopy = (ImageView) itemview.findViewById(R.id.img_row_add);
+            fabAdd = (FloatingActionButton) itemview.findViewById(R.id.fab_add);
 
         }
+
 
         public void setData(Animal current, int position) {
             this.title.setText(current.getTitle());
@@ -87,16 +88,25 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         }
 
         public void setListeners() {
-            imgCopy.setOnClickListener(MyViewHolder.this);
+            fabAdd.setOnClickListener(MyViewHolder.this);
 
         }
+        public void addImg(int position, Animal animal) {
+            mData.add(position, animal);
+            notifyItemInserted(getItemCount()+1);
+            imgThumb.setImageResource(R.drawable.frame_photo);
+            Log.d(TAG, "addImg: " + getItemCount());
+            animal.setTitle("IMG"+position);
 
+        }
         public void onClick(View v) {
+
             Log.i(TAG, "onClick before operation" + position + " Size : " + mData.size());
             switch (v.getId()) {
 
-                case R.id.img_row_add:
-                    addItem(position, current);
+                case R.id.fab_add:
+//                    addItem(position, current);
+                    addImg(position,current);
                     break;
             }
             Log.i(TAG, "onClick after operation  Size :" + mData.size());
